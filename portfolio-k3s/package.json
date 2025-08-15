@@ -1,0 +1,37 @@
+{
+  "name": "tawfiqul-bari-portfolio",
+  "version": "1.0.0",
+  "description": "Professional portfolio website for Md. Tawfiqul Bari - Senior Manager, Cloud & Cybersecurity Strategist",
+  "main": "index.html",
+  "scripts": {
+    "start": "python -m http.server 8000",
+    "dev": "python -m http.server 8000",
+    "build": "echo 'Static site - no build required'",
+    "deploy": "echo 'Deploy to your preferred hosting platform'"
+  },
+  "keywords": [
+    "portfolio",
+    "cloud-computing",
+    "cybersecurity",
+    "enterprise-architecture",
+    "it-leadership",
+    "bangladesh",
+    "infosonik"
+  ],
+  "author": {
+    "name": "Md. Tawfiqul Bari",
+    "email": "TawfiqulBari@gmail.com",
+    "url": "https://www.linkedin.com/in/tawfiqulbari/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TawfiqulBari/portfolio.git"
+  },
+  "bugs": {
+    "url": "https://github.com/TawfiqulBari/portfolio/issues"
+  },
+  "homepage": "https://github.com/TawfiqulBari/portfolio#readme",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {}
+}

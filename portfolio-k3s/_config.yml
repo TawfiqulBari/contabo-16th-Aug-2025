@@ -1,0 +1,46 @@
+# Jekyll Configuration for GitHub Pages
+title: "Md. Tawfiqul Bari - Professional Portfolio"
+description: "Senior Manager, Cloud & Cybersecurity Strategist with 24+ years experience"
+url: "https://tawfiqulbari.github.io"
+baseurl: "/portfolio"
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+plugins:
+  - jekyll-sitemap
+  - jekyll-feed
+  - jekyll-seo-tag
+
+# Exclude files from build
+exclude:
+  - node_modules
+  - package.json
+  - docker-compose*.yml
+  - Dockerfile*
+  - deploy*.sh
+  - *.backup*
+  - logs/
+  - ssl/
+  - letsencrypt/
+
+# Include files
+include:
+  - _pages
+  - assets
+  - css
+  - js
+  - images
+
+# SEO settings  
+author: "Md. Tawfiqul Bari"
+twitter:
+  username: tawfiqulbari
+social:
+  name: Md. Tawfiqul Bari
+  links:
+    - https://www.linkedin.com/in/tawfiqulbari/
+    - https://github.com/TawfiqulBari
+
+# Analytics (optional)
+# google_analytics: UA-XXXXXXXX-X

@@ -32,7 +32,7 @@ spec:
       volumes:
       - name: portfolio-files
         hostPath:
-          path: /opt/k3s/portfolio-docker
+          path: /opt/k3s/portfolio-k3s
           type: Directory
 ---
 apiVersion: v1

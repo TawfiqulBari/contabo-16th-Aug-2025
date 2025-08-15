@@ -1,0 +1,12 @@
+<svg width="400" height="400" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#667eea"/>
+            <stop offset="100%" stop-color="#764ba2"/>
+        </linearGradient>
+    </defs>
+    <rect width="400" height="400" rx="200" fill="url(#gradient)"/>
+    <circle cx="200" cy="160" r="60" fill="rgba(255,255,255,0.3)"/>
+    <path d="M140 280 Q140 240 200 240 Q260 240 260 280 L260 320 Q260 340 240 340 L160 340 Q140 340 140 320 Z" fill="rgba(255,255,255,0.3)"/>
+    <text x="200" y="360" font-family="Inter, sans-serif" font-size="16" font-weight="600" fill="white" text-anchor="middle">Professional Photo</text>
+</svg>
