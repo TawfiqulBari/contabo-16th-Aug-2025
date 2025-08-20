@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-config
+data:
+  DATABASE_URL: "postgresql://user@postgres:5432/notesapp"
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: db-secrets
+type: Opaque
+data:
+  password: cGFzc3dvcmQ= # base64 encoded "password"
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: app-secrets
+type: Opaque
+data:
+  GOOGLE_CLIENT_ID: MjU4OTk5OTk3ODA2LTdocWY4bzZrdTFscnJrdWRkNjM4YzFmNDllMzd2Mm00LmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29t
+  GOOGLE_CLIENT_SECRET: R09DU1BYLWoyWFVVU3ZXUWJ5RHU3QmNvV25TMDBxR0JxRW4=

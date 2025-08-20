@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-requirements
+data:
+  requirements.txt: |
+    fastapi==0.109.2
+    uvicorn==0.27.1
+    python-multipart==0.0.9
+    sqlalchemy==2.0.28
+    psycopg2-binary==2.9.9
+    python-jose==3.3.0
+    passlib==1.7.4
+    python-dotenv==1.0.1
+    gunicorn==21.2.0
+    requests==2.31.0
+    pydantic==2.6.4
+    google-auth==2.27.0
+    google-auth-oauthlib==1.2.0
+    google-api-python-client==2.120.0
+    google==3.0.0
+    oauth2client==4.1.3

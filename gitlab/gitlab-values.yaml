@@ -1,0 +1,125 @@
+# GitLab Helm Chart Values for gitlab.tawfiqulbari.work
+
+# Global configuration
+global:
+  hosts:
+    domain: tawfiqulbari.work
+    hostSuffix: ""
+    https: true
+    externalIP: 62.169.16.31
+  ingress:
+    enabled: true
+    class: "traefik"
+    annotations:
+      kubernetes.io/ingress.class: traefik
+      traefik.ingress.kubernetes.io/router.entrypoints: websecure
+      traefik.ingress.kubernetes.io/router.tls: "true"
+  edition: ce
+
+# GitLab Unicorn (Puma) configuration
+gitlab:
+  unicorn:
+    resources:
+      requests:
+        cpu: 100m
+        memory: 256Mi
+      limits:
+        cpu: 500m
+        memory: 1Gi
+
+# GitLab Sidekiq configuration
+sidekiq:
+  resources:
+    requests:
+      cpu: 50m
+      memory: 256Mi
+    limits:
+      cpu: 200m
+      memory: 512Mi
+
+# PostgreSQL configuration
+postgresql:
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      cpu: 500m
+      memory: 512Mi
+
+# Redis configuration
+redis:
+  resources:
+    requests:
+      cpu: 50m
+      memory: 64Mi
+    limits:
+      cpu: 200m
+      memory: 256Mi
+
+# MinIO configuration (for object storage)
+minio:
+  resources:
+    requests:
+      cpu: 50m
+      memory: 128Mi
+    limits:
+      cpu: 200m
+      memory: 256Mi
+
+# Registry configuration
+registry:
+  resources:
+    requests:
+      cpu: 50m
+      memory: 64Mi
+    limits:
+      cpu: 200m
+      memory: 256Mi
+
+# GitLab Shell configuration
+gitlab-shell:
+  resources:
+    requests:
+      cpu: 50m
+      memory: 64Mi
+    limits:
+      cpu: 200m
+      memory: 256Mi
+
+# GitLab Gitaly configuration
+gitaly:
+  resources:
+    requests:
+      cpu: 50m
+      memory: 128Mi
+    limits:
+      cpu: 500m
+      memory: 512Mi
+
+# Certmanager configuration
+certmanager:
+  install: false
+
+# Certmanager issuer configuration
+certmanager-issuer:
+  email: admin@tawfiqulbari.work
+
+# Prometheus configuration
+prometheus:
+  install: false
+
+# GitLab Runner configuration
+gitlab-runner:
+  install: false
+
+# Ingress configuration
+ingress-nginx:
+  enabled: false
+  controller:
+    scope:
+      enabled: false
+
+# Traefik configuration
+traefik:
+  install: false

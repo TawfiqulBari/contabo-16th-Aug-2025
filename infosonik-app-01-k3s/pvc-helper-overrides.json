@@ -1,0 +1,23 @@
+{
+  "spec": {
+    "volumes": [
+      {
+        "name": "kaniko-pvc",
+        "persistentVolumeClaim": {
+          "claimName": "kaniko-pvc"
+        }
+      }
+    ],
+    "containers": [
+      {
+        "name": "pvc-helper",
+        "volumeMounts": [
+          {
+            "name": "kaniko-pvc",
+            "mountPath": "/mnt"
+          }
+        ]
+      }
+    ]
+  }
+}

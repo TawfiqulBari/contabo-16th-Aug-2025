@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: kaniko
+spec:
+  containers:
+  - name: kaniko
+    image: gcr.io/kaniko-project/executor:latest
+    args: ["--dockerfile=Dockerfile",
+           "--context=dir:///workspace",
+           "--no-push",
+           "--tarPath=/output/image.tar"]
+    volumeMounts:
+      - name: source-files
+        mountPath: /workspace
+      - name: output-volume
+        mountPath: /output
+  restartPolicy: Never
+  volumes:
+    - name: source-files
+      hostPath:
+        path: /opt/k3s/infosonik-app-01-k3s
+        type: Directory
+    - name: output-volume
+      persistentVolumeClaim:
+        claimName: kaniko-pvc

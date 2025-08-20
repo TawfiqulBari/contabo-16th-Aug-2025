@@ -1,0 +1,45 @@
+# GitLab Helm Chart Values for gitlab.tawfiqulbari.work with Traefik
+
+# Global configuration
+global:
+  hosts:
+    domain: tawfiqulbari.work
+    hostSuffix: ""
+    https: true
+  ingress:
+    enabled: true
+    class: "traefik"
+    annotations:
+      kubernetes.io/ingress.class: traefik
+      traefik.ingress.kubernetes.io/router.entrypoints: websecure
+      traefik.ingress.kubernetes.io/router.tls: "true"
+  edition: ce
+
+# Webservice configuration to fix workhorse connectivity issue
+webservice:
+  extraEnv:
+    - name: GITLAB_WORKHORSE_AUTH_BACKEND
+      value: "http://127.0.0.1:8080"
+
+# Disable nginx-ingress since we're using Traefik
+nginx-ingress:
+  enabled: false
+
+# Disable components we don't need for a basic installation
+prometheus:
+  install: false
+
+gitlab-runner:
+  install: false
+
+# Certmanager configuration
+certmanager:
+  install: false
+
+# Certmanager issuer configuration
+certmanager-issuer:
+  email: admin@tawfiqulbari.work
+
+# Traefik configuration (already installed)
+traefik:
+  install: false

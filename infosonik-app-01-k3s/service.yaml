@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: infosonik-app-service
+  labels:
+    app: infosonik-app
+spec:
+  type: LoadBalancer
+  selector:
+    app: infosonik-app
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 8000
+    name: http
+  - protocol: TCP
+    port: 443
+    targetPort: 8000
+    name: https

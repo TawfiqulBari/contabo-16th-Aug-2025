@@ -1,0 +1,35 @@
+# Minimal GitLab Helm Chart Values for gitlab.tawfiqulbari.work
+
+# Global configuration
+global:
+  hosts:
+    domain: tawfiqulbari.work
+    hostSuffix: ""
+    https: true
+  ingress:
+    enabled: true
+    class: "traefik"
+  edition: ce
+
+# Disable components we don't need for a basic installation
+prometheus:
+  install: false
+
+gitlab-runner:
+  install: false
+
+# Certmanager configuration
+certmanager:
+  install: false
+
+# Certmanager issuer configuration
+certmanager-issuer:
+  email: admin@tawfiqulbari.work
+
+# Ingress configuration
+ingress-nginx:
+  enabled: false
+
+# Traefik configuration (already installed)
+traefik:
+  install: false

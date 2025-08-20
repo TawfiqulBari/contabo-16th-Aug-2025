@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pvc-helper
+spec:
+  volumes:
+    - name: kaniko-pvc
+      persistentVolumeClaim:
+        claimName: kaniko-pvc
+  containers:
+    - name: pvc-helper
+      image: busybox
+      command: ["sleep", "3600"]
+      volumeMounts:
+        - name: kaniko-pvc
+          mountPath: /mnt
+  restartPolicy: Never
