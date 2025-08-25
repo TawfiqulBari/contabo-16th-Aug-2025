@@ -14,6 +14,25 @@ spec:
       labels:
         app: portfolio
     spec:
+      affinity:
+        nodeAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - weight: 1
+            preference:
+              matchExpressions:
+              - key: node-role.kubernetes.io/worker
+                operator: Exists
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - weight: 100
+            podAffinityTerm:
+              labelSelector:
+                matchExpressions:
+                - key: app
+                  operator: In
+                  values:
+                  - portfolio
+              topologyKey: kubernetes.io/hostname
       containers:
       - name: portfolio
         image: nginx:alpine
@@ -29,11 +48,33 @@ spec:
         volumeMounts:
         - name: portfolio-files
           mountPath: /usr/share/nginx/html
+        - name: nginx-config
+          mountPath: /etc/nginx/conf.d/portfolio.conf
+          subPath: portfolio.conf
+      - name: php-fpm
+        image: php:8.2-fpm-alpine
+        ports:
+        - containerPort: 9000
+        resources:
+          requests:
+            cpu: "100m"
+            memory: "128Mi"
+          limits:
+            cpu: "250m"
+            memory: "256Mi"
+        volumeMounts:
+        - name: portfolio-files
+          mountPath: /var/www/html
       volumes:
       - name: portfolio-files
-        hostPath:
-          path: /opt/k3s/portfolio-k3s
-          type: Directory
+        configMap:
+          name: portfolio-files-cm
+      - name: nginx-config
+        configMap:
+          name: nginx-config
+          items:
+          - key: nginx.conf
+            path: portfolio.conf
 ---
 apiVersion: v1
 kind: Service
@@ -47,3 +88,4 @@ spec:
       port: 80
       targetPort: 80
   type: LoadBalancer
+  loadBalancerIP: 192.168.1.240

@@ -1,0 +1,10 @@
+{{! Previous/next page links - only displayed on page 2+ }}
+<div class="pagination">
+    {{#if prev}}
+        <a class="pagination-item pagination-prev" href="{{page_url prev}}">← Newer Posts</a>
+    {{/if}}
+    <span class="page-number">Page {{page}} of {{pages}}</span>
+    {{#if next}}
+        <a class="pagination-item pagination-next" href="{{page_url next}}">Older Posts →</a>
+    {{/if}}
+</div>

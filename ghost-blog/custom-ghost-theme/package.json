@@ -1,0 +1,44 @@
+{
+  "name": "custom-ghost-theme",
+  "version": "1.0.0",
+  "description": "A custom Ghost theme inspired by portfolio.tawfiqulbari.work",
+  "engines": {
+    "ghost": ">=4.0.0",
+    "ghost-api": "v4"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Tawfiqul Bari",
+    "email": "admin@tawfiqulbari.work"
+  },
+  "config": {
+    "posts_per_page": 12,
+    "custom": {
+      "hero_section": {
+        "type": "boolean",
+        "default": true,
+        "group": "homepage"
+      },
+      "hero_title": {
+        "type": "text",
+        "default": "Welcome to My Blog",
+        "group": "homepage"
+      },
+      "hero_description": {
+        "type": "text",
+        "default": "Discover amazing content and insights",
+        "group": "homepage"
+      },
+      "hero_button_text": {
+        "type": "text",
+        "default": "Get Started",
+        "group": "homepage"
+      },
+      "hero_button_link": {
+        "type": "text",
+        "default": "/about",
+        "group": "homepage"
+      }
+    }
+  }
+}

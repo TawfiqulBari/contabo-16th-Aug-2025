@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="theme-color" content="#15171A">
+
+    <title>{{meta_title}}</title>
+
+    {{!-- Styles --}}
+    <link rel="stylesheet" type="text/css" href="{{asset "css/screen.css"}}" />
+
+    {{!-- Ghost outputs important style and meta data with this tag --}}
+    {{ghost_head}}
+</head>
+<body class="{{body_class}}">
+    <div class="site-wrapper">
+        {{!-- Header --}}
+        <header class="site-header">
+            <nav class="site-nav">
+                <div class="nav-brand">
+                    <a class="site-title" href="{{@site.url}}">
+                        {{#if @site.logo}}
+                            <img class="site-logo" src="{{@site.logo}}" alt="{{@site.title}}" />
+                        {{else}}
+                            {{@site.title}}
+                        {{/if}}
+                    </a>
+                </div>
+                <div class="nav-menu">
+                    {{navigation}}
+                    {{#if @member}}
+                        <a class="menu-item" href="#/portal/account">Account</a>
+                        <a class="menu-item" href="#signout" data-members-signout>Sign out</a>
+                    {{else}}
+                        <a class="menu-item" href="#/portal/signin">Sign in</a>
+                    {{/if}}
+                </div>
+            </nav>
+        </header>
+
+        {{!-- All the main content gets inserted here, index.hbs, post.hbs, etc --}}
+        <main class="site-main">
+            {{{body}}}
+        </main>
+
+        {{!-- Footer --}}
+        <footer class="site-footer">
+            <div class="footer-content">
+                <section class="copyright">
+                    <a href="{{@site.url}}">{{@site.title}}</a> &copy; {{date format="YYYY"}}
+                </section>
+                <nav class="footer-nav">
+                    {{navigation type="secondary"}}
+                    <a href="https://ghost.org/" target="_blank" rel="noopener">Powered by Ghost</a>
+                </nav>
+            </div>
+        </footer>
+    </div>
+
+    {{!-- Ghost outputs important scripts and data with this tag --}}
+    {{ghost_foot}}
+
+    {{!-- Scripts --}}
+    <script src="{{asset "js/main.js"}}"></script>
+</body>
+</html>

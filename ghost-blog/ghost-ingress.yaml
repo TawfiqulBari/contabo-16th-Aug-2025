@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ghost-ingress
+  annotations:
+    kubernetes.io/ingress.class: traefik
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"  # Adjust based on your cert-manager setup
+spec:
+  rules:
+  - host: blog.tawfiqulbari.work
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: ghost
+            port:
+              number: 80
+  tls:
+  - hosts:
+    - blog.tawfiqulbari.work
+    secretName: ghost-tls-secret  # This will be created by cert-manager

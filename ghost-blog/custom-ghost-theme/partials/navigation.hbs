@@ -1,0 +1,20 @@
+<nav class="site-nav">
+    <div class="nav-brand">
+        <a class="site-title" href="{{@site.url}}">
+            {{#if @site.logo}}
+                <img class="site-logo" src="{{@site.logo}}" alt="{{@site.title}}" />
+            {{else}}
+                {{@site.title}}
+            {{/if}}
+        </a>
+    </div>
+    <div class="nav-menu">
+        {{navigation}}
+        {{#if @member}}
+            <a class="menu-item" href="#/portal/account">Account</a>
+            <a class="menu-item" href="#signout" data-members-signout>Sign out</a>
+        {{else}}
+            <a class="menu-item" href="#/portal/signin">Sign in</a>
+        {{/if}}
+    </div>
+</nav>

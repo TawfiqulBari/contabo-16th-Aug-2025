@@ -1,0 +1,56 @@
+{{!< default}}
+
+<main class="site-main">
+    <div class="container">
+        <header class="tag-header">
+            {{#tag}}
+                <h1 class="tag-name">{{name}}</h1>
+                {{#if description}}
+                    <p class="tag-description">{{description}}</p>
+                {{/if}}
+                <div class="tag-meta">
+                    <span class="post-count">{{plural ../pagination.total empty='No posts' singular='% post' plural='% posts'}}</span>
+                </div>
+            {{/tag}}
+        </header>
+
+        <section class="posts-feed">
+            {{#foreach posts}}
+                <article class="post-card {{post_class}}">
+                    {{#if feature_image}}
+                        <figure class="post-card-image">
+                            <img src="{{feature_image}}" alt="{{title}}" />
+                        </figure>
+                    {{/if}}
+                    <div class="post-card-content">
+                        <header class="post-card-header">
+                            <h2 class="post-card-title">
+                                <a href="{{url}}">{{title}}</a>
+                            </h2>
+                            <div class="post-card-meta">
+                                <time datetime="{{date format="YYYY-MM-DD"}}">{{date format="MMMM D, YYYY"}}</time>
+                                {{#if reading_time}}
+                                    <span class="reading-time">{{reading_time}}</span>
+                                {{/if}}
+                            </div>
+                        </header>
+                        <section class="post-card-excerpt">
+                            <p>{{excerpt words="33"}}</p>
+                        </section>
+                        <footer class="post-card-footer">
+                            {{#if tags}}
+                                <div class="post-card-tags">
+                                    {{#foreach tags}}
+                                        <a href="{{url}}" class="tag">{{name}}</a>
+                                    {{/foreach}}
+                                </div>
+                            {{/if}}
+                        </footer>
+                    </div>
+                </article>
+            {{/foreach}}
+        </section>
+
+        {{pagination}}
+    </div>
+</main>

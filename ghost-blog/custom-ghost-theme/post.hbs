@@ -1,0 +1,64 @@
+{{!< default}}
+
+<main class="site-main">
+    <article class="post-full {{post_class}}">
+        <header class="post-header">
+            <div class="container">
+                {{#if feature_image}}
+                    <figure class="post-image">
+                        <img src="{{feature_image}}" alt="{{title}}" />
+                    </figure>
+                {{/if}}
+                <h1 class="post-title">{{title}}</h1>
+                <div class="post-meta">
+                    <time class="post-date" datetime="{{date format="YYYY-MM-DD"}}">{{date format="MMMM D, YYYY"}}</time>
+                    {{#if reading_time}}
+                        <span class="reading-time">{{reading_time}}</span>
+                    {{/if}}
+                    {{#if tags}}
+                        <div class="post-tags">
+                            {{#foreach tags}}
+                                <a href="{{url}}" class="tag">{{name}}</a>
+                            {{/foreach}}
+                        </div>
+                    {{/if}}
+                </div>
+            </div>
+        </header>
+
+        <section class="post-content">
+            <div class="container">
+                {{content}}
+            </div>
+        </section>
+
+        <footer class="post-footer">
+            <div class="container">
+                {{#if authors}}
+                    {{#foreach authors}}
+                        <div class="author-card">
+                            {{#if profile_image}}
+                                <img class="author-image" src="{{profile_image}}" alt="{{name}}" />
+                            {{/if}}
+                            <div class="author-info">
+                                <h4 class="author-name">{{name}}</h4>
+                                {{#if bio}}
+                                    <p class="author-bio">{{bio}}</p>
+                                {{/if}}
+                            </div>
+                        </div>
+                    {{/foreach}}
+                {{/if}}
+
+                <div class="post-navigation">
+                    {{#prev_post}}
+                        <a href="{{url}}" class="nav-previous">← Previous Post</a>
+                    {{/prev_post}}
+                    {{#next_post}}
+                        <a href="{{url}}" class="nav-next">Next Post →</a>
+                    {{/next_post}}
+                </div>
+            </div>
+        </footer>
+    </article>
+</main>

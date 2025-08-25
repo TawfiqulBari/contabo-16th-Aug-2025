@@ -1,0 +1,68 @@
+{{!< default}}
+
+<main class="site-main">
+    <div class="container">
+        <header class="author-header">
+            {{#author}}
+                <div class="author-profile">
+                    {{#if profile_image}}
+                        <img class="author-image" src="{{profile_image}}" alt="{{name}}" />
+                    {{/if}}
+                    <div class="author-info">
+                        <h1 class="author-name">{{name}}</h1>
+                        {{#if bio}}
+                            <p class="author-bio">{{bio}}</p>
+                        {{/if}}
+                        <div class="author-meta">
+                            {{#if location}}
+                                <span class="author-location">{{location}}</span>
+                            {{/if}}
+                            {{#if website}}
+                                <a class="author-website" href="{{website}}" target="_blank" rel="noopener">Website</a>
+                            {{/if}}
+                        </div>
+                    </div>
+                </div>
+            {{/author}}
+        </header>
+
+        <section class="posts-feed">
+            {{#foreach posts}}
+                <article class="post-card {{post_class}}">
+                    {{#if feature_image}}
+                        <figure class="post-card-image">
+                            <img src="{{feature_image}}" alt="{{title}}" />
+                        </figure>
+                    {{/if}}
+                    <div class="post-card-content">
+                        <header class="post-card-header">
+                            <h2 class="post-card-title">
+                                <a href="{{url}}">{{title}}</a>
+                            </h2>
+                            <div class="post-card-meta">
+                                <time datetime="{{date format="YYYY-MM-DD"}}">{{date format="MMMM D, YYYY"}}</time>
+                                {{#if reading_time}}
+                                    <span class="reading-time">{{reading_time}}</span>
+                                {{/if}}
+                            </div>
+                        </header>
+                        <section class="post-card-excerpt">
+                            <p>{{excerpt words="33"}}</p>
+                        </section>
+                        <footer class="post-card-footer">
+                            {{#if tags}}
+                                <div class="post-card-tags">
+                                    {{#foreach tags}}
+                                        <a href="{{url}}" class="tag">{{name}}</a>
+                                    {{/foreach}}
+                                </div>
+                            {{/if}}
+                        </footer>
+                    </div>
+                </article>
+            {{/foreach}}
+        </section>
+
+        {{pagination}}
+    </div>
+</main>

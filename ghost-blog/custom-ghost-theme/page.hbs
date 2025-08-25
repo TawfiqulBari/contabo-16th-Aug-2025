@@ -1,0 +1,27 @@
+{{!< default}}
+
+<main class="site-main">
+    <article class="page-full">
+        {{#if @page.show_title_and_feature_image}}
+            <header class="page-header">
+                <div class="container">
+                    {{#if feature_image}}
+                        <figure class="page-image">
+                            <img src="{{feature_image}}" alt="{{title}}" />
+                        </figure>
+                    {{/if}}
+                    <h1 class="page-title">{{title}}</h1>
+                    {{#if custom_excerpt}}
+                        <p class="page-excerpt">{{custom_excerpt}}</p>
+                    {{/if}}
+                </div>
+            </header>
+        {{/if}}
+
+        <section class="page-content">
+            <div class="container">
+                {{content}}
+            </div>
+        </section>
+    </article>
+</main>

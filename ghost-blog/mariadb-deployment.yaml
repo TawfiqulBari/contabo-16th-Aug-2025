@@ -1,0 +1,62 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: ghost-mysql-password
+type: Opaque
+data:
+  password: Z2hvc3QxMjM= # base64 encoded "ghost123" - change this in production
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ghost-mysql
+  labels:
+    app: ghost-mysql
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ghost-mysql
+  template:
+    metadata:
+      labels:
+        app: ghost-mysql
+    spec:
+      containers:
+      - name: mysql
+        image: mariadb:10.6
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: ghost-mysql-password
+              key: password
+        - name: MYSQL_DATABASE
+          value: ghost
+        - name: MYSQL_USER
+          value: ghost
+        - name: MYSQL_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: ghost-mysql-password
+              key: password
+        ports:
+        - containerPort: 3306
+        volumeMounts:
+        - name: mysql-data
+          mountPath: /var/lib/mysql
+      volumes:
+      - name: mysql-data
+        emptyDir: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ghost-mysql
+spec:
+  selector:
+    app: ghost-mysql
+  ports:
+  - port: 3306
+    targetPort: 3306
+  type: ClusterIP
