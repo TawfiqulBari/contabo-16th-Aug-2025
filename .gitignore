@@ -1,0 +1,79 @@
+# Kubernetes secrets and sensitive files
+*secrets*.yaml
+*secrets*.yml
+*secret*.yaml
+*secret*.yml
+*credentials*.yaml
+*credentials*.yml
+*config*.yaml
+*config*.yml
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+*.key
+*.pem
+*.crt
+*.csr
+*.pfx
+*.p12
+*.der
+*.cer
+*.jks
+*.keystore
+*.truststore
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+# Runtime data
+pids/
+*.pid
+*.seed
+*.pid.lock
+# Dependency directories
+node_modules/
+jspm_packages/
+# Optional npm cache directory
+.npm
+# Optional eslint cache
+.eslintcache
+# Optional REPL history
+.node_repl_history
+# Output of 'npm pack'
+*.tgz
+# Yarn Integrity file
+.yarn-integrity
+# dotenv environment variables file
+.env
+.env.test
+# parcel-bundler cache (https://parceljs.org/)
+.cache
+.parcel-cache
+# next.js build output
+.next
+# nuxt.js build output
+.nuxt
+# vuepress build output
+.vuepress/dist
+# Serverless directories
+.serverless/
+# FuseBox cache
+.fusebox/
+# DynamoDB Local files
+.dynamodb/
+# TernJS port file
+.tern-port
+# Temporary folders
+tmp/
+temp/
